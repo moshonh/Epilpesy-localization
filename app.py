@@ -131,12 +131,12 @@ with st.sidebar:
     st.markdown("### ⚙️ Configuration")
 
     # API Key
-    api_key_env = os.environ.get("ANTHROPIC_API_KEY", "")
+    api_key_env = os.environ.get("GEMINI_API_KEY", "")
     api_key_input = st.text_input(
-        "Anthropic API Key",
+        "Google Gemini API Key",
         value=api_key_env or st.session_state.get("api_key", ""),
         type="password",
-        help="Your Anthropic API key. Can also be set via ANTHROPIC_API_KEY environment variable.",
+        help="Your Gemini API key (free at aistudio.google.com). Can also be set via GEMINI_API_KEY environment variable.",
     )
     if api_key_input:
         st.session_state["api_key"] = api_key_input
@@ -180,6 +180,7 @@ with st.sidebar:
     st.caption(
         "EpiloClassify v1.0  \n"
         "Built on ILAE 2017 classification.  \n"
+        "LLM: Google Gemini 1.5 Pro — free tier.  \n"
         "Reference dataset: 340 peer-reviewed epilepsy articles."
     )
 
@@ -556,7 +557,7 @@ with tab2:
     # API key check
     api_key = st.session_state.get("api_key", "")
     if not api_key:
-        st.error("⚠️ Please enter your Anthropic API key in the sidebar before generating a report.")
+        st.error("⚠️ Please enter your Gemini API key in the sidebar. Get one free at aistudio.google.com")
         st.stop()
 
     # Generate button
